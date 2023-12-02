@@ -1,0 +1,47 @@
+{
+  "name": "siap-android",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "ionic:build": "npm run build"
+  },
+  "dependencies": {
+    "@capacitor-community/camera-preview": "^5.0.0",
+    "@capacitor/android": "5.4.2",
+    "@capacitor/camera": "^5.0.7",
+    "@capacitor/core": "^5.4.2",
+    "@capacitor/device": "^5.0.6",
+    "@capacitor/geolocation": "^5.0.6",
+    "@capacitor/google-maps": "^5.3.3",
+    "@capacitor/ios": "^5.4.2",
+    "@capacitor/preferences": "^5.0.6",
+    "@capacitor/toast": "^5.0.6",
+    "@fawmi/vue-google-maps": "^0.9.79",
+    "axios": "^1.5.1",
+    "face-api.js": "^0.20.0",
+    "nvm": "^0.0.4",
+    "pinia": "^2.1.6",
+    "pinia-plugin-persistedstate": "^3.2.0",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.3.20"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.4.2",
+    "@vitejs/plugin-basic-ssl": "^1.0.1",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.5"
+  },
+  "description": "This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

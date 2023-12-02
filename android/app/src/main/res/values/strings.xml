@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">siapfkip</string>
+    <string name="title_activity_main">siapfkip</string>
+    <string name="package_name">com.siapfkip.app</string>
+    <string name="custom_url_scheme">com.siapfkip.app</string>
+    <string name="google_maps_api_key">AIzaSyBeeo9yBypCnU7vRHINzcgKfFhS-huXAgo</string>
+</resources>

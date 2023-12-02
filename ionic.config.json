@@ -1,0 +1,7 @@
+{
+  "name": "siap-android",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}

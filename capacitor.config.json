@@ -1,0 +1,17 @@
+{
+  "appId": "com.siapfkip.app",
+  "appName": "siapfkip",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "allowNavigation": [
+      "https://demo.ikromi.codes/api/*"
+    ],
+    "cleartext":"true"
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}
