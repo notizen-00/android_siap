@@ -6,8 +6,13 @@
             prepend-icon="fa-duotone fa-mobile"
         >
            {{ getDevice.manufacturer || '-' }}  {{ getDevice.model || '-' }} 
+
+       
         </v-btn>
+        
+        
         </div>
+        {{ getLocation }}
     </v-container>
 </template>
 
@@ -16,6 +21,7 @@ import { onMounted, ref,inject } from 'vue';
 import { storeToRefs } from 'pinia';
 const store = inject('store')
 const { getDevice } = storeToRefs(store.deviceStore)
+const { getLocation} = storeToRefs(store.mapStore)
 
 // alert(getDevice.value.manufacturer)
 

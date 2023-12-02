@@ -13,6 +13,7 @@ export const useKaryawanStores = defineStore('karyawanStore', {
         lat:null,
         lng:null
     },
+    radius_penugasan:'',
      apiUrl:import.meta.env.VITE_APP_API_URL
 
   }),
@@ -49,7 +50,8 @@ export const useKaryawanStores = defineStore('karyawanStore', {
                   Authorization: `Bearer ${token}`,
                 },
               });
-         
+
+          this.radius_penugasan = response.data.data[0].lokasi.radius_lokasi;
           this.lokasi_penugasan = response.data.data[0];
           this.koordinat_penugasan.lat = parseFloat(response.data.data[0].lokasi.latitude);
           this.koordinat_penugasan.lng = parseFloat(response.data.data[0].lokasi.longitude);

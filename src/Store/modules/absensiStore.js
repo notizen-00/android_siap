@@ -5,12 +5,14 @@ import { Toast } from '@capacitor/toast';
 import { useAuthStores } from './authStore';
 import { useMapStores } from './mapStore';
 import { useKaryawanStores } from './karyawanStore';
+import { useDevicesStores } from './deviceStore';
 export const useAbsensiStores = defineStore('absensiStore', {
   state: () => ({
     dialog: false,
     mapStore:useMapStores(),
     karyawanStore:useKaryawanStores(),
     authStore:useAuthStores(),
+    deviceStore:useDevicesStores(),
     hasil:[],
     apiUrl:import.meta.env.VITE_APP_API_URL
 
@@ -22,13 +24,16 @@ export const useAbsensiStores = defineStore('absensiStore', {
     async absenMasuk() {
       try {
         const lokasi_karyawan = this.mapStore.location;
-    
+        
         // Assuming you have the 'axios' library imported
         const response = await axios.post(
           this.apiUrl + 'api/absensi',
           { 
             lokasi_karyawan:lokasi_karyawan,
-            lokasi_penugasan:this.karyawanStore.koordinat_penugasan
+            lokasi_penugasan:this.karyawanStore.koordinat_penugasan,
+            radius:this.karyawanStore.radius_penugasan,
+            device_id:this.deviceStore.device.id,
+            karyawan_id:this.authStore.userId
           }, // Assuming the API expects an object with 'lokasi_karyawan' property
           {
             headers: {
@@ -48,7 +53,7 @@ export const useAbsensiStores = defineStore('absensiStore', {
         });
       } catch (error) {
         console.error('Error during absenMasuk:', error);
-        alert(error.message)
+        alert(JSON.stringify(error.response.data.message))
         // Handle the error as needed
       }
     }

@@ -8,6 +8,7 @@ export const useDevicesStores = defineStore('deviceStore', {
     device:{
         manufacturer:'',
         model:'',
+        id:''
     }
 
   }),
@@ -18,8 +19,11 @@ export const useDevicesStores = defineStore('deviceStore', {
     async fetchDevices() {
       try {
         const info = await Device.getInfo();
+        const Id = await Device.getId();
         this.device.manufacturer = info.manufacturer || '-';
         this.device.model = info.model || '-';
+        this.device.id = Id.identifier || 0;
+      
       } catch (error) {
         console.error('Error fetching device info:', error);
       }

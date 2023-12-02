@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios';
 import  router from '@/router'
 import { Geolocation } from '@capacitor/geolocation';
-
+import {useAuthStores} from './authStore'
 export const useMapStores = defineStore('mapStore', {
   state: () => ({
     dialog: false,
@@ -19,13 +19,37 @@ export const useMapStores = defineStore('mapStore', {
     setMapElement(){
         this.mapElement = !this.mapElement
     },
-    async setGeolocation(){
+    async setGeolocation() {
+      const permissions = await Geolocation.checkPermissions();
+     
+      if (permissions.coarseLocation === 'granted') {
+      
+        try {
+          const position = await Geolocation.getCurrentPosition();
 
-        const position = await Geolocation.getCurrentPosition();
+          this.location.lat = position.coords.latitude;
+          this.location.lng = position.coords.longitude;
+        } catch (error) {
+          // Handle errors when getting geolocation
+       
+        }
+      } else if (permissions.coarseLocation !== 'granted') {
+        // Coarse location permission granted, handle accordingly
+        await Geolocation.requestPermissions();
+        alert('belum accuracy')
+        // Add your logic for handling coarse location permission
+      } else {
 
-        this.location.lat = position.coords.latitude;
-        this.location.lng = position.coords.longitude;
+        await Geolocation.requestPermissions();
+  
+        const authStore = useAuthStores();
+   
+        authStore.doLogout();
 
+      
+        router.push('/logout');
+
+      }
     },
     async setLokasiPenugasan(){
 
