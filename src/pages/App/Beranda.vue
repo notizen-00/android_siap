@@ -8,6 +8,8 @@
             <Device/>
             <Recent/>
 
+            <AbsensiDialog></AbsensiDialog>
+
     <BottomBar/>
 </template>
 <script setup>
@@ -21,6 +23,7 @@
     import Device from '@/components/Beranda/Device.vue'
     import {inject,onMounted} from 'vue'
     import { storeToRefs } from 'pinia'
+    import AbsensiDialog from '@/components/Dialog/AbsensiDialog.vue'
 
     const store = inject('store')
 

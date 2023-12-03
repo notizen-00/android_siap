@@ -1,6 +1,9 @@
 <template>
 
-        <div class="map mt-8" ref="mapDivRef"></div>
+        <div class="map mt-8 relative" ref="mapDivRef"></div>
+        <div class="relative -mt-20 w-full mb-5 d-flex justify-end">
+          <v-btn color="black" @click="store.mapStore.getWatchPosition()" class="mr-5 w-full" icon="fas fa-location-crosshairs"></v-btn>
+        </div>
 
     
 </template>

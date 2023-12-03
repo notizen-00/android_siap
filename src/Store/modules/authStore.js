@@ -21,7 +21,7 @@ export const useAuthStores = defineStore('authStore', {
 
     async doLogin(data) {
       try {
-        const store = useKaryawanStores();
+        const karyawanStore = useKaryawanStores();
         const response = await axios.post(this.apiUrl+'apis/login', {
           email: data.email,
           password: data.password,
@@ -39,7 +39,7 @@ export const useAuthStores = defineStore('authStore', {
           this.userId = response.data.data.userId;
           this.token = response.data.data.token;
           this.username = response.data.data.name;
-          store.fetchDetail();
+          karyawanStore.fetchDetail();
        
           console.log(this.token);
           console.log(this.userId);
