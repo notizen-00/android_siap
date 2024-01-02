@@ -56,9 +56,8 @@ export const useKaryawanStores = defineStore('karyawanStore', {
           this.koordinat_penugasan.lat = parseFloat(response.data.data[0].lokasi.latitude);
           this.koordinat_penugasan.lng = parseFloat(response.data.data[0].lokasi.longitude);
         } catch (error) {
-     
           console.error('Gagal mengambil data Lokasi Penugasan:', error);
-          alert('test')
+          alert(error.message)
           // alert(error.message);
         }
     }

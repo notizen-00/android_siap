@@ -15,7 +15,6 @@
             <v-icon size="40" color="pink">fa-light fa-right-to-bracket</v-icon>
             <small class="text-capitalize font-light mt-1 text-slate-500">Masuk</small>
             </v-btn>
-         
             <v-btn
             rounded="xl"
             class="mt-1"

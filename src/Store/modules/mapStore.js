@@ -60,7 +60,6 @@ export const useMapStores = defineStore('mapStore', {
     },
     async setGeolocation() {
       const permissions = await Geolocation.checkPermissions();
-     
       if (permissions.coarseLocation === 'granted') {
       
         try {
@@ -71,20 +70,17 @@ export const useMapStores = defineStore('mapStore', {
         } catch (error) {
           // Handle errors when getting geolocation
           alert(error.message);
-       
         }
-     
       } else if (permissions.coarseLocation !== 'granted') {
         // Coarse location permission granted, handle accordingly
         await Geolocation.requestPermissions();
-        alert('belum accuracy')
+        // alert('belum accuracy')
         // Add your logic for handling coarse location permission
       } else {
 
         await Geolocation.requestPermissions();
   
-        const authStore = useAuthStores();
-   
+        const authStore = useAuthStores();   
         authStore.doLogout();
 
       

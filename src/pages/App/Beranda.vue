@@ -31,9 +31,7 @@
 
     onMounted(()=>{
         store.mapStore.setGeolocation();
-
-     
-         store.karyawanStore.fetchDetail();
+        store.karyawanStore.fetchDetail();
     })
 
 </script>

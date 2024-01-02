@@ -26,7 +26,6 @@ export const useAuthStores = defineStore('authStore', {
           email: data.email,
           password: data.password,
         });
-       
         if (response.status === 200) {
           // alert('Berhasil login');
 
@@ -40,7 +39,6 @@ export const useAuthStores = defineStore('authStore', {
           this.token = response.data.data.token;
           this.username = response.data.data.name;
           karyawanStore.fetchDetail();
-       
           console.log(this.token);
           console.log(this.userId);
           console.log(this.username);
@@ -61,7 +59,6 @@ export const useAuthStores = defineStore('authStore', {
 
         this.error = 'Terjadi Kesalahan . Periksa kembali email dan password Anda';
         
-       
       }
     },
     async doLogout() {

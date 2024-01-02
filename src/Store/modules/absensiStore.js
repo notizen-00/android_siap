@@ -63,7 +63,9 @@ export const useAbsensiStores = defineStore('absensiStore', {
           image:this.absenTemp.foto,
           lokasi:this.mapStore.location,
           device_id:this.absenTemp.device_id,
-          karyawan_id:this.karyawanStore.detail.id
+          karyawan_id:this.karyawanStore.detail.id,
+          jenis_presensi:'masuk',
+
 
         }, 
         {
@@ -73,8 +75,8 @@ export const useAbsensiStores = defineStore('absensiStore', {
         }
       );
 
-
-      alert(JSON.stringify(response.data));  
+    
+      alert(JSON.stringify(response.data.message));  
   
     },
     async absenMasuk() {
@@ -107,15 +109,10 @@ export const useAbsensiStores = defineStore('absensiStore', {
       this.absenTemp.device_id = response.data.data.id_device;
       this.absenTemp.terlambat = response.data.data.terlambat ? response.data.data.terlambat : '-';
       this.takePicture();
-
-   
-
-     
-
         // alert(JSON.stringify(response.data));
       }else{
-       
-         response.data.data.forEach(async item => {
+
+          response.data.data.forEach(async item => {
     
           await Toast.show({
             text: item.error_message,
