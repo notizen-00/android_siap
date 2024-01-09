@@ -21,7 +21,8 @@ export const useAbsensiStores = defineStore('absensiStore', {
       foto:'',
       terlambat:'',
       device_id:''
-  }
+    },
+    jenis_presensi:''
 
   }),
   actions: {
@@ -64,8 +65,8 @@ export const useAbsensiStores = defineStore('absensiStore', {
           lokasi:this.mapStore.location,
           device_id:this.absenTemp.device_id,
           karyawan_id:this.karyawanStore.detail.id,
-          jenis_presensi:'masuk',
-
+          jenis_presensi:this.jenis_presensi,
+          device:this.deviceStore.device
 
         }, 
         {
@@ -75,8 +76,13 @@ export const useAbsensiStores = defineStore('absensiStore', {
         }
       );
 
-    
-      alert(JSON.stringify(response.data.message));  
+        
+      if(response.data.success == true){
+        this.dialog = false;
+        alert('berhasil absen')
+      }else{
+        alert('gagal')
+      }
   
     },
     async absenMasuk() {
@@ -92,7 +98,8 @@ export const useAbsensiStores = defineStore('absensiStore', {
             radius:this.karyawanStore.radius_penugasan,
             device_id:this.deviceStore.device.id,
             karyawan_id:this.karyawanStore.detail.id,
-            device:this.deviceStore.device
+            device:this.deviceStore.device,
+            jenis_presensi:'masuk'
           }, 
           {
             headers: {
@@ -105,7 +112,7 @@ export const useAbsensiStores = defineStore('absensiStore', {
       if(response.data.success === true)
       {
         // alert(JSON.stringify(response.data.data.id_device))
-
+      this.jenis_presensi = 'masuk'
       this.absenTemp.device_id = response.data.data.id_device;
       this.absenTemp.terlambat = response.data.data.terlambat ? response.data.data.terlambat : '-';
       this.takePicture();
@@ -113,7 +120,7 @@ export const useAbsensiStores = defineStore('absensiStore', {
       }else{
 
           response.data.data.forEach(async item => {
-    
+          this.jenis_presensi = ''
           await Toast.show({
             text: item.error_message,
             duration: 'short',
@@ -122,16 +129,13 @@ export const useAbsensiStores = defineStore('absensiStore', {
         });
 
       }
-        // alert(JSON.stringify(response.data));
-    
-        // Assuming you have 'react-native-toast-message' imported for showing toasts
-    
+
       } catch (error) {
         console.error('Error during absenMasuk:', error);
-        // alert('test');
+        this.jenis_presensi = ''
         alert(JSON.stringify(error.response.data.message))
         
-        // Handle the error as needed
+
       }
     }
     

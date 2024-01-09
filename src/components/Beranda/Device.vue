@@ -4,15 +4,11 @@
         <v-btn 
             variant="outline"
             prepend-icon="fa-duotone fa-mobile"
-        >
-           {{ getDevice.manufacturer || '-' }}  {{ getDevice.model || '-' }} 
-
-       
+        > 
+            {{ getDevice.manufacturer || '-' }}  {{ getDevice.model || '-' }} 
         </v-btn>
         
-        
         </div>
-        {{ getLocation }}
     </v-container>
 </template>
 
@@ -26,7 +22,6 @@ const { getLocation} = storeToRefs(store.mapStore)
 // alert(getDevice.value.manufacturer)
 
 onMounted(async() => {
-  await store.deviceStore.fetchDevices();
-  
+    await store.deviceStore.fetchDevices();
 });
 </script>
